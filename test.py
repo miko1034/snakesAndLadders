@@ -38,14 +38,13 @@ def updateVisibleGrid(grid_positions,visible_grid):
 		pos = pos + int(input("enter amount to move: "))
 		pastPlayerPos = [0,0]
 		for i in range(len(grid_positions)):
-
-			if pos in grid_positions[i]:
-				playerPos = [i,grid_positions[i].index(pos)]
-				visible_grid[playerPos[0]][playerPos[1]] = 1
-				print(f"playerPos: {playerPos}\npastPlayerPos: {pastPlayerPos}")
-				pastPlayerPos = playerPos
-				visible_grid[pastPlayerPos[0]][pastPlayerPos[1]] = 0
-				print(f"pastPlayerPos: {pastPlayerPos}")
+			if i != 0:
+				if pos in grid_positions[i]:
+					playerPos = [i,grid_positions[i].index(pos)]
+					visible_grid[pastPlayerPos[0]][pastPlayerPos[1]] = 0
+					visible_grid[playerPos[0]][playerPos[1]] = 1
+					print(f"playerPos: {playerPos}\npastPlayerPos: {pastPlayerPos}") # works but leaves past player positions. ugh :/
+				
 
 		for i in range(len(visible_grid)):
 			print(visible_grid[i])
