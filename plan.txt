@@ -1,0 +1,16 @@
+Grid ==> 2D list
+
+Objects:
+	- Counter
+		>Colour
+		>Position
+	- Snakes
+		>Start
+		>End
+	- Ladders
+		>Start
+		>End
+
+Dice
+
+Includes a conditional loop until a player reaches 100
