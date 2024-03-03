@@ -20,7 +20,7 @@ visible_grid = [
 	[0,0,0,0,0,0,0,0,0,0],
 	[0,0,0,0,0,0,0,0,0,0],
 	[0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0], # make function that clears all player positions from grid
 	[0,0,0,0,0,0,0,0,0,0],
 	[0,0,0,0,0,0,0,0,0,0],
 	[0,0,0,0,0,0,0,0,0,0],
@@ -28,26 +28,22 @@ visible_grid = [
 		]
 
 def updateVisibleGrid(grid_positions,visible_grid):
+	#prints visible grid
 	for i in range(len(visible_grid)):
 		print(visible_grid[i])
-	pos = 0
+	#tries to find index of player position and update the visible grid of the same index to a 1
+	playerPos = 1 #<-- start of the board
 	while True:
-		if pos >= 100:
-			print("you win")
-			break
-		pos = pos + int(input("enter amount to move: "))
-		pastPlayerPos = [0,0]
-		for i in range(len(grid_positions)):
-			if i != 0:
-				if pos in grid_positions[i]:
-					playerPos = [i,grid_positions[i].index(pos)]
-					visible_grid[pastPlayerPos[0]][pastPlayerPos[1]] = 0
-					visible_grid[playerPos[0]][playerPos[1]] = 1
-					print(f"playerPos: {playerPos}\npastPlayerPos: {pastPlayerPos}") # works but leaves past player positions. ugh :/
+		playerPos += int(input("enter the amount to move: "))
+		for i in range(len(grid_positions)): # cycles through the 
+			if playerPos in grid_positions[i]:
+				currentPos = [i,grid_positions[i].index(playerPos)]
+				visible_grid[currentPos[0]][currentPos[1]] = 1
+				pastPos = currentPos
+				currentPos
 				
 
-		for i in range(len(visible_grid)):
-			print(visible_grid[i])
+
 
 
 updateVisibleGrid(grid_positions,visible_grid)
