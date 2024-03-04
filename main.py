@@ -1,4 +1,5 @@
 import random
+import os
 
 #counter
 class Counter:
@@ -64,10 +65,11 @@ class Game:
 		snakeCount = random.randint(1,5)
 		snakes = [Snake() for i in range(snakeCount)]
 		ladders = [Ladder() for i in range(ladderCount)]
-		#generates sake start points
+		#generates sake start and end positions
 		for i in range(len(snakes)):
 			snakes[i].setPos(random.randint(1,100),random.randint(1,100))
 			print(snakes[i].getPos())
+		#add updating the visible grid
 		return snakes,ladders
 
 
@@ -84,11 +86,16 @@ class Game:
 
 	def run(self):
 		while True:
+			os.system("clear")
 			print("----------Snakes and Ladders----------\n\n")
 			print(f"Here is the current board:\n{self.displayGrid()}")
 			action = int(input("Actions:\n1) Move\n2)Quit\nYour action? "))
 			if action == 1:
 				pass
+			elif action == 2:
+				pass
+			else:
+				print("Invalid option. Please enter again")
 
 
 game = Game()
