@@ -27,21 +27,32 @@ visible_grid = [
 	[0,0,0,0,0,0,0,0,0,0],
 		]
 
+def cleanGrid(some_grid):
+	for i in range(len(some_grid)):
+		if 1 in some_grid[i]:
+			some_grid[i][some_grid[i].index(1)] = 0
+	return some_grid
+
+def displayGrid(grid):
+	for i in range(len(grid)):
+		print(grid[i])
+
 def updateVisibleGrid(grid_positions,visible_grid):
 	#prints visible grid
-	for i in range(len(visible_grid)):
-		print(visible_grid[i])
+	displayGrid(visible_grid)
 	#tries to find index of player position and update the visible grid of the same index to a 1
-	playerPos = 1 #<-- start of the board
+	playerPos = 0 #<-- start of the board
 	while True:
+		if playerPos > 99:
+			print("winner")
+			quit()
 		playerPos += int(input("enter the amount to move: "))
 		for i in range(len(grid_positions)): # cycles through the 
 			if playerPos in grid_positions[i]:
 				currentPos = [i,grid_positions[i].index(playerPos)]
+				cleanGrid(visible_grid)
 				visible_grid[currentPos[0]][currentPos[1]] = 1
-				pastPos = currentPos
-				currentPos
-				
+		displayGrid(visible_grid)
 
 
 
